@@ -9,20 +9,23 @@ function FLB_NB_benchmarks(input_file, first, last, seed, max_sz, bigM, threshol
 % paramaters for ConstrainedMinimalCutSetsEnumeratorMILP
 % opt_tol, feas_tol, int_tol: CPLEX tolerance settings
 % time_limit: time limit in seconds for each MCS size level
+% the results are saved in a file with the name
+% [input_file]_s[seed]_[idx(first)]_[idx(last)].mat where idx is a variable
+% in the input_file
 
 solution_limit= Inf;
 working_memory= 80000; % GB
 load([input_file, '.mat'], 'rd_rat', 'irrev_rd_rat', 'flux_lb', 'flux_ub', 'cuts', 'kn',...
   'idx', 'inh', 'ub', 'des', 'db');
 q= length(rd_rat);
-comp_time= zeros(max_sz, q);
-comp_time2= zeros(max_sz, q);
-comp_time3= zeros(max_sz, q);
-comp_time4= zeros(max_sz, q);
-mcs= cell(1, q);
-mcs2= cell(1, q);
-mcs3= cell(1, q);
-mcs4= cell(1, q);
+comp_time= zeros(max_sz, q); % computation time for FLB stoichmat desired
+comp_time2= zeros(max_sz, q); % computation time for FLB kernel desired
+comp_time3= zeros(max_sz, q); % computation time for NB stoichmat desired
+comp_time4= zeros(max_sz, q); % computation time for NB kernel desired
+mcs= cell(1, q); % MCS for FLB stoichmat desired
+mcs2= cell(1, q); % MCS for FLB kernel desired
+mcs3= cell(1, q); % MCS for NB stoichmat desired
+mcs4= cell(1, q); % MCS for NB kernel desired
 matching_mcs= false(1, q);
 
 %%
