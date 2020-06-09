@@ -6,7 +6,7 @@
 FLB_NB_benchmarks('iJM658_synthetic_lethals_input', 1, 1, 5, 5, 0, 1, 1, true, true, true, 1e-6, 1e-6, 1e-7, 72000)
 
 %%
-% enumerate synthetic lethals up to size 5 for mue threshold subselection 1,
+% enumerate synthetic lethals up to size 5 for mue threshold subselection 2,
 % indicators, split v, separate z and without irrev_geq
 % runs the FLB and NB approach
 FLB_NB_benchmarks('iJM658_synthetic_lethals_input', 2, 2, 5, 5, 0, 1, 1, true, false, false, 1e-6, 1e-6, 1e-7, 72000)
